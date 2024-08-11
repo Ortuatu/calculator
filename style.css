@@ -1,0 +1,41 @@
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    height: 960px;
+}
+
+button{
+    flex: 1 25%;
+    font-size: 75px;
+  } 
+
+.btn-number {
+background-color:grey;
+}
+
+.btn-decimal {
+background-color:green;
+}
+
+.btn-operator {
+background-color:orange;
+}
+
+.btn-equals {
+background-color:green;
+}
+
+.btn-clear {
+    background-color:crimson;
+}
+
+.btn-backspace {
+    background-color:crimson;
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+    height: 100px;
+    font-size: 75px;
+}
