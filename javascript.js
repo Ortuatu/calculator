@@ -122,8 +122,8 @@ equals.addEventListener('click', function() {
         b = '';                 
         operator = '';
         operated = false;
-        if (!display.textContent.includes('.')) {
-            decimalAdded = false;
+        if (display.textContent.includes('.')) {
+            decimalAdded = true;
             };
         equaled = true;
     } else if (a !== '' && b === '') {
