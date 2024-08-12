@@ -82,8 +82,8 @@ decimal.addEventListener('click', function() {
         decimalAdded = true;
         equaled = false;
     }
-
-    // fix this function, as if I use backspace to get rid of a decimal I can't readd the decimal. I think I need to do that in the backspace function though
+    
+    // fix the ability to differentiate begween a and b, as right bow when i add two decimals after equating a function, it doesnt work be aise i think the operator is actually assigned when i try to add a decimal point to the result
 });
 
 operatorButtons.forEach(function(button) {
