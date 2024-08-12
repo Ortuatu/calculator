@@ -3,7 +3,6 @@ let b = '';
 let operator = '';
 let operated = false;
 let decimalAdded = false;
-let equaled = false;
 
 const numberButtons = document.querySelectorAll('.btn-number');
 
@@ -51,15 +50,6 @@ document.addEventListener('keydown', function(event) {
 
 numberButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-        if (equaled) {
-            a = '';
-            b = '';
-            operator = '';
-            operated = false;
-            decimalAdded = false;
-            equaled = false;
-        }
-        
         if (operator === '' && operated == false) {
             a += this.textContent;
             display.textContent = a;
@@ -115,7 +105,6 @@ equals.addEventListener('click', function() {
         }  
         b = '';                 
         operator = '';
-        equaled = true;
     } else if (a !== '' && b === '') {
         display.textContent = a;
     } else if (a === '') {
@@ -142,16 +131,17 @@ clear.addEventListener('click', function() {
     b = '';
     operator = '';
     operated = false;
+    decimalAdded = false;
     display.textContent = 0;
 });
 
 backspace.addEventListener('click', function() {
     if (operator === '') {
         a = a.slice(0, -1);
-        display.textContent = a;
+        display.textContent = a || 0;
     } else if (operator !== '') {
         b = b.slice(0, -1);
-        display.textContent = b;
+        display.textContent = b || 0;
     }
 });
 
