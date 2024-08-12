@@ -1,8 +1,8 @@
 let a = '';
 let b = '';
 let operator = '';
-let operated = false;
 let decimalAdded = false;
+let equaled = false; // this exists pretty much just to be able to start typiong in a number after you press equals and not concatonate to the result, while also allowing you to press an operator instead of a number to use the previous result as a.
 
 const numberButtons = document.querySelectorAll('.btn-number');
 
@@ -50,7 +50,16 @@ document.addEventListener('keydown', function(event) {
 
 numberButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-        if (operator === '' && operated == false) {
+        if (equaled) {
+            a = '';
+            b = '';
+            operator = '';
+            operated = false;
+            decimalAdded = false;
+            equaled = false;
+        }
+        
+        if (operator === '') {
             a += this.textContent;
             display.textContent = a;
         } else {
@@ -74,6 +83,10 @@ decimal.addEventListener('click', function() {
 
 operatorButtons.forEach(function(button) {
     button.addEventListener('click', function() {
+        if (equaled) {
+            equaled = false;
+        }
+        
         if (a !== '' && b === '') {
             operator = this.textContent;
             display.textContent = operator;
@@ -88,7 +101,6 @@ operatorButtons.forEach(function(button) {
             }
             b = '';
             operator = this.textContent;
-            operated = true;
             decimalAdded = false;
         }
     });
@@ -105,6 +117,7 @@ equals.addEventListener('click', function() {
         }  
         b = '';                 
         operator = '';
+        equaled = true;
     } else if (a !== '' && b === '') {
         display.textContent = a;
     } else if (a === '') {
@@ -130,7 +143,6 @@ clear.addEventListener('click', function() {
     a = '';
     b = '';
     operator = '';
-    operated = false;
     decimalAdded = false;
     display.textContent = 0;
 });
