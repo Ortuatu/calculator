@@ -124,7 +124,9 @@ equals.addEventListener('click', function() {
         operated = false;
         if (display.textContent.includes('.')) {
             decimalAdded = true;
-            };
+            } else {
+                decimalAdded = false;
+                };
         equaled = true;
     } else if (a !== '' && b === '') {
         display.textContent = a;
