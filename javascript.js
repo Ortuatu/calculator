@@ -75,12 +75,12 @@ decimal.addEventListener('click', function() {
         a += '.';
         display.textContent = a;
         decimalAdded = true;
-        equaled = false;
+        //equaled = false;
     } else if (operator !== '' && !decimalAdded) {
         b += '.';
         display.textContent = b;
         decimalAdded = true;
-        equaled = false;
+        //equaled = false;
     }
 
     // fix this function, as if I use backspace to get rid of a decimal I can't readd the decimal. I think I need to do that in the backspace function though
