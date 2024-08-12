@@ -127,10 +127,8 @@ equals.addEventListener('click', function() {
         equaled = true;
     } else if (a !== '' && b === '') {
         display.textContent = a;
-        operator = '';
     } else if (a === '') {
         display.textContent = 0;
-        operator = '';
     }
 });
 
