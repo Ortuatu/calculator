@@ -3,6 +3,7 @@ let b = '';
 let operator = '';
 let decimalAdded = false;
 let equaled = false; // this exists pretty much just to be able to start typiong in a number after you press equals and not concatonate to the result, while also allowing you to press an operator instead of a number to use the previous result as a.
+let operated = false;
 
 const numberButtons = document.querySelectorAll('.btn-number');
 
@@ -59,7 +60,7 @@ numberButtons.forEach(function(button) {
             equaled = false;
         }
         
-        if (operator === '') {
+        if (operator === '' && operated == false) {
             a += this.textContent;
             display.textContent = a;
         } else {
@@ -74,11 +75,15 @@ decimal.addEventListener('click', function() {
         a += '.';
         display.textContent = a;
         decimalAdded = true;
+        equaled = false;
     } else if (operator !== '' && !decimalAdded) {
         b += '.';
         display.textContent = b;
         decimalAdded = true;
+        equaled = false;
     }
+
+    // fix this function, as if I use backspace to get rid of a decimal I can't readd the decimal. I think I need to do that in the backspace function though
 });
 
 operatorButtons.forEach(function(button) {
@@ -101,6 +106,7 @@ operatorButtons.forEach(function(button) {
             }
             b = '';
             operator = this.textContent;
+            operated = true;
             decimalAdded = false;
         }
     });
@@ -117,6 +123,7 @@ equals.addEventListener('click', function() {
         }  
         b = '';                 
         operator = '';
+        operated = false;
         equaled = true;
     } else if (a !== '' && b === '') {
         display.textContent = a;
@@ -144,14 +151,22 @@ clear.addEventListener('click', function() {
     b = '';
     operator = '';
     decimalAdded = false;
+    operated = false;
+    equaled = false;
     display.textContent = 0;
 });
 
 backspace.addEventListener('click', function() {
     if (operator === '') {
+        if (a.slice(-1) === '.') {
+            decimalAdded = false;
+        }
         a = a.slice(0, -1);
         display.textContent = a || 0;
     } else if (operator !== '') {
+        if (b.slice(-1) === '.') {
+            decimalAdded = false;
+        }
         b = b.slice(0, -1);
         display.textContent = b || 0;
     }
