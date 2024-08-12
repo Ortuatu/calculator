@@ -82,8 +82,6 @@ decimal.addEventListener('click', function() {
         decimalAdded = true;
         equaled = false;
     }
-    
-    // fix the ability to differentiate begween a and b, as right bow when i add two decimals after equating a function, it doesnt work be aise i think the operator is actually assigned when i try to add a decimal point to the result
 });
 
 operatorButtons.forEach(function(button) {
@@ -124,7 +122,9 @@ equals.addEventListener('click', function() {
         b = '';                 
         operator = '';
         operated = false;
-        decimalAdded = false;
+        if (display.textContent !== '.') {
+            decimalAdded = false;
+            };
         equaled = true;
     } else if (a !== '' && b === '') {
         display.textContent = a;
